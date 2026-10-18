@@ -13,6 +13,8 @@ python3 -m unittest -v
 
 Open `signal_lab.py` in VS Code and use it as the exercise file. The functions are kept small so you can replace an implementation, add print statements, or make a new test without setting up a framework.
 
+There is also a notebook version in `signal_lab.ipynb`. Open it in VS Code or Jupyter and run the cells from top to bottom. It uses the same module, so changes you make in `signal_lab.py` show up in the notebook.
+
 ## What is included
 
 - Moving-average and exponential filters
