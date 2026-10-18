@@ -15,6 +15,8 @@ Open `signal_lab.py` in VS Code and use it as the exercise file. The functions a
 
 There is also a notebook version in `signal_lab.ipynb`. Open it in VS Code or Jupyter and run the cells from top to bottom. It uses the same module, so changes you make in `signal_lab.py` show up in the notebook.
 
+The four filter functions are intentionally left as TODOs: `moving_average`, `exponential_filter`, `median_filter`, and `high_pass_difference`. Their tests are skipped until you implement them; the UART and OOK tests stay active.
+
 ## What is included
 
 - Moving-average and exponential filters

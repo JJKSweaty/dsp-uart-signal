@@ -14,15 +14,19 @@ from signal_lab import (
 
 
 class SignalLabTests(unittest.TestCase):
+    @unittest.skip("Exercise: implement moving_average")
     def test_moving_average(self) -> None:
         self.assertEqual(moving_average([0, 2, 4, 6], window=2), [0.0, 1.0, 3.0, 5.0])
 
+    @unittest.skip("Exercise: implement exponential_filter")
     def test_exponential_filter(self) -> None:
         self.assertEqual(exponential_filter([0, 10, 10], alpha=0.5), [0.0, 5.0, 7.5])
 
+    @unittest.skip("Exercise: implement median_filter")
     def test_median_filter_removes_impulse(self) -> None:
         self.assertEqual(median_filter([0, 1, 8, 1, 0]), [0.5, 1.0, 1.0, 1.0, 0.5])
 
+    @unittest.skip("Exercise: implement high_pass_difference")
     def test_high_pass_difference(self) -> None:
         self.assertEqual(high_pass_difference([2, 5, 1]), [0.0, 3, -4])
 

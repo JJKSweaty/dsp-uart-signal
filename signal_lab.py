@@ -2,56 +2,27 @@
 
 from __future__ import annotations
 
-from statistics import median
 from typing import Iterable, Sequence
 
 
 def moving_average(samples: Sequence[float], window: int = 3) -> list[float]:
-    """Return a causal moving average with a short warm-up at the start."""
-    if window < 1:
-        raise ValueError("window must be at least 1")
-
-    filtered: list[float] = []
-    for index in range(len(samples)):
-        start = max(0, index - window + 1)
-        section = samples[start : index + 1]
-        filtered.append(sum(section) / len(section))
-    return filtered
+    """TODO: Return a causal moving average with a short warm-up at the start."""
+    raise NotImplementedError
 
 
 def exponential_filter(samples: Sequence[float], alpha: float = 0.25) -> list[float]:
-    """Return an exponential moving average."""
-    if not 0 < alpha <= 1:
-        raise ValueError("alpha must be greater than 0 and at most 1")
-    if not samples:
-        return []
-
-    filtered = [float(samples[0])]
-    for sample in samples[1:]:
-        previous = filtered[-1]
-        filtered.append(alpha * sample + (1 - alpha) * previous)
-    return filtered
+    """TODO: Return an exponential moving average."""
+    raise NotImplementedError
 
 
 def median_filter(samples: Sequence[float], window: int = 3) -> list[float]:
-    """Replace each sample with the median of its local neighborhood."""
-    if window < 1 or window % 2 == 0:
-        raise ValueError("window must be a positive odd number")
-
-    radius = window // 2
-    filtered: list[float] = []
-    for index in range(len(samples)):
-        start = max(0, index - radius)
-        end = min(len(samples), index + radius + 1)
-        filtered.append(float(median(samples[start:end])))
-    return filtered
+    """TODO: Replace each sample with the median of its local neighborhood."""
+    raise NotImplementedError
 
 
 def high_pass_difference(samples: Sequence[float]) -> list[float]:
-    """Highlight changes between neighboring samples."""
-    if not samples:
-        return []
-    return [0.0] + [samples[index] - samples[index - 1] for index in range(1, len(samples))]
+    """TODO: Highlight changes between neighboring samples."""
+    raise NotImplementedError
 
 
 def decode_grouped_bits(samples: Sequence[float], samples_per_bit: int, threshold: float = 0.5) -> str:
