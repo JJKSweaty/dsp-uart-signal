@@ -1,29 +1,26 @@
 # DSP UART Signal Lab
 
-A small Python playground for learning signal processing with noisy digital captures.
+Small Python exercises for working with noisy digital signals.
 
-The examples are intentionally plain: write a few lines, run the tests, and inspect what changed. It starts with simple list operations and builds toward moving averages, median filters, UART decoding, and on-off keying.
+The notebooks start with lists, slices, loops, and functions. Later exercises cover moving averages, median filters, UART frames, and OOK signals. The filter and decoder functions are left as TODOs in the practice notebooks so they can be implemented and tested one at a time.
 
-## Run it
+## Start here
+
+Open these files in VS Code with the Python and Jupyter extensions installed:
+
+- `01_python_for_embedded.ipynb` — Python basics
+- `02_noise_and_filters.ipynb` — filter exercises
+- `03_noisy_uart.ipynb` — UART decoding
+- `04_ook_demodulation.ipynb` — OOK demodulation
+- `signal_decoder.ipynb` — a longer decoder exercise
+
+Run notebook cells from top to bottom. The small command-line version can be run with:
 
 ```bash
 python3 signal_lab.py
 python3 -m unittest -v
 ```
 
-Open `signal_lab.py` in VS Code and use it as the exercise file. The functions are kept small so you can replace an implementation, add print statements, or make a new test without setting up a framework.
+The `Medium_45min_Signal_Mock` folder contains a challenge notebook, a separate solution notebook, and a CSV capture. Open the challenge first.
 
-There is also a notebook version in `signal_lab.ipynb`. Open it in VS Code or Jupyter and run the cells from top to bottom. It uses the same module, so changes you make in `signal_lab.py` show up in the notebook.
-
-The four filter functions are intentionally left as TODOs: `moving_average`, `exponential_filter`, `median_filter`, and `high_pass_difference`. Their tests are skipped until you implement them; the UART and OOK tests stay active.
-
-## What is included
-
-- Moving-average and exponential filters
-- Median and high-pass difference filters
-- Fixed-width bit decoding
-- Center-sampled UART decoding
-- OOK bit decoding
-- Synthetic captures for `b"Hi!"` and `101100101011`
-
-The project uses only the Python standard library. There is no service, account, or setup beyond Python 3.
+Everything here uses Python's standard library. `matplotlib` is optional for the plotting cell.
