@@ -1,3 +1,5 @@
+import csv
+from pathlib import Path
 import unittest
 
 from signal_lab import (
@@ -14,6 +16,21 @@ from signal_lab import (
 
 
 class SignalLabTests(unittest.TestCase):
+    def test_notebook_captures(self) -> None:
+        data = Path(__file__).parent / "data"
+        with (data / "noisy_uart.csv").open(newline="") as file:
+            uart = [float(row["voltage"]) for row in csv.DictReader(file)]
+        self.assertEqual(decode_uart(uart, samples_per_bit=16), b"Hi!")
+        self.assertTrue(all(value >= 0.5 for value in uart[:48]))
+        with (data / "ook_capture.csv").open(newline="") as file:
+            ook = [float(row["amplitude"]) for row in csv.DictReader(file)]
+        self.assertEqual(len(ook), 12 * 24)
+        bits = "".join(
+            str(int(sum(x * x for x in ook[i:i + 24]) / 24 >= 0.18))
+            for i in range(0, len(ook), 24)
+        )
+        self.assertEqual(bits, "101100101011")
+
     @unittest.skip("Exercise: implement moving_average")
     def test_moving_average(self) -> None:
         self.assertEqual(moving_average([0, 2, 4, 6], window=2), [0.0, 1.0, 3.0, 5.0])
